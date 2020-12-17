@@ -76,7 +76,7 @@ scrollL.map((link) => {
 //Change navigation style on scroll
 (function() {
   const scrollspys = document.querySelectorAll(".scrollspy");
-  const linksScrolls = document.querySelector(".nav-list");
+  const linksScrolls = document.querySelector("#nav-list");
   const linksHeight = linksScrolls.offsetHeight;
   const allLinks = linksScrolls.querySelectorAll("a");
   function scrollspy() {
