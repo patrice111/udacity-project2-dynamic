@@ -74,30 +74,19 @@ scrollL.map((link) => {
 });
 
 //Change navigation style on scroll
-(function() {
-  const scrollspys = document.querySelectorAll(".scrollspy");
-  const linksScrolls = document.querySelector("#nav-list");
-  const linksHeight = linksScrolls.offsetHeight;
-  const allLinks = linksScrolls.querySelectorAll("a");
-  function scrollspy() {
-    scrollspys.forEach(current => {
-      let _ = current;
-      let currentElementOffset = _.offsetTop;
-      let scrollPosition =
-        document.documentElement.scrollTop || document.body.scrollTop;
-      if (currentElementOffset <= scrollPosition + linksHeight) {
-        allLinks.forEach(currentLink => {
-          currentLink.classList.remove("active");
-        });
-        const currentID = current.getAttribute("id");
-        document
-          .querySelector(`a[href="#${currentID}"]`)
-          .classList.add("active");
-      }
+let sectionList = document.querySelectorAll('section');
+const scrolling = () => {
+    sectionList.forEach(section => {
+        const elementPos = Math.floor(section.getBoundingClientRect().top);
+        console.log('elementPos: ', elementPos);
+        if (elementPos < 300 && elementPos > -300) {
+            section.classList.add('nav-link');
+        } else {
+            section.classList.remove('nav-link');
+        }
     });
-  }
-  window.addEventListener("scroll", scrollspy);
-})();
+};
+window.addEventListener('scroll', scrolling);
 
 
 //Top Button
